@@ -1,3 +1,144 @@
 [submodule "dotfiles"]
 	path = dotfiles
 	url = https://github.com/tqer39/dotfiles
+[submodule "edu-quest"]
+	path = edu-quest
+	url = https://github.com/tqer39/edu-quest
+[submodule "xtrade"]
+	path = xtrade
+	url = https://github.com/tqer39/xtrade
+[submodule "obsidian-vault-2"]
+	path = obsidian-vault-2
+	url = https://github.com/tqer39/obsidian-vault-2
+[submodule "openai-generate-pr-description"]
+	path = openai-generate-pr-description
+	url = https://github.com/tqer39/openai-generate-pr-description
+[submodule "terraform-github"]
+	path = terraform-github
+	url = https://github.com/tqer39/terraform-github
+[submodule "notifications"]
+	path = notifications
+	url = https://github.com/tqer39/notifications
+[submodule "obsidian-vault"]
+	path = obsidian-vault
+	url = https://github.com/tqer39/obsidian-vault
+[submodule "renovate-config"]
+	path = renovate-config
+	url = https://github.com/tqer39/renovate-config
+[submodule "anime-tweet-bot"]
+	path = anime-tweet-bot
+	url = https://github.com/tqer39/anime-tweet-bot
+[submodule "GenLipSyncVideo"]
+	path = GenLipSyncVideo
+	url = https://github.com/tqer39/GenLipSyncVideo
+[submodule "update-license-year"]
+	path = update-license-year
+	url = https://github.com/tqer39/update-license-year
+[submodule "blog"]
+	path = blog
+	url = https://github.com/tqer39/blog
+[submodule "tqer39"]
+	path = tqer39
+	url = https://github.com/tqer39/tqer39
+[submodule "boilerplate-base"]
+	path = boilerplate-base
+	url = https://github.com/tqer39/boilerplate-base
+[submodule "common-github-actions"]
+	path = common-github-actions
+	url = https://github.com/tqer39/common-github-actions
+[submodule "terraform-vercel"]
+	path = terraform-vercel
+	url = https://github.com/tqer39/terraform-vercel
+[submodule "media-server"]
+	path = media-server
+	url = https://github.com/tqer39/media-server
+[submodule "terraform-aws"]
+	path = terraform-aws
+	url = https://github.com/tqer39/terraform-aws
+[submodule "time-capsule"]
+	path = time-capsule
+	url = https://github.com/tqer39/time-capsule
+[submodule "kkhs-workspace"]
+	path = kkhs-workspace
+	url = https://github.com/tqer39/kkhs-workspace
+[submodule "google-photos-to-s3-glacier"]
+	path = google-photos-to-s3-glacier
+	url = https://github.com/tqer39/google-photos-to-s3-glacier
+[submodule "claude-code-config"]
+	path = claude-code-config
+	url = https://github.com/tqer39/claude-code-config
+[submodule "open-kintai"]
+	path = open-kintai
+	url = https://github.com/tqer39/open-kintai
+[submodule "openclaw-ops"]
+	path = openclaw-ops
+	url = https://github.com/tqer39/openclaw-ops
+[submodule "tts-partner"]
+	path = tts-partner
+	url = https://github.com/tqer39/tts-partner
+[submodule "my-chat-ai-comfyui"]
+	path = my-chat-ai-comfyui
+	url = https://github.com/tqer39/my-chat-ai-comfyui
+[submodule "nana-kana-dialogue-system"]
+	path = nana-kana-dialogue-system
+	url = https://github.com/tqer39/nana-kana-dialogue-system
+[submodule "discord-voice-message-transcription-bot"]
+	path = discord-voice-message-transcription-bot
+	url = https://github.com/tqer39/discord-voice-message-transcription-bot
+[submodule "boilerplate-saas"]
+	path = boilerplate-saas
+	url = https://github.com/tqer39/boilerplate-saas
+[submodule "fish-speech-training"]
+	path = fish-speech-training
+	url = https://github.com/tqer39/fish-speech-training
+[submodule "sensorcorpus-trial"]
+	path = sensorcorpus-trial
+	url = https://github.com/tqer39/sensorcorpus-trial
+[submodule "terraform-private-aws"]
+	path = terraform-private-aws
+	url = https://github.com/tqer39/terraform-private-aws
+[submodule "sample-battery-logger"]
+	path = sample-battery-logger
+	url = https://github.com/tqer39/sample-battery-logger
+[submodule "sample-googleapi-gmail"]
+	path = sample-googleapi-gmail
+	url = https://github.com/tqer39/sample-googleapi-gmail
+[submodule "learn_rails5_github_circleci"]
+	path = learn_rails5_github_circleci
+	url = https://github.com/tqer39/learn_rails5_github_circleci
+[submodule "iot-kii"]
+	path = iot-kii
+	url = https://github.com/tqer39/iot-kii
+[submodule "lottery-result-scrape"]
+	path = lottery-result-scrape
+	url = https://github.com/tqer39/lottery-result-scrape
+[submodule "raspberrypi"]
+	path = raspberrypi
+	url = https://github.com/tqer39/raspberrypi
+[submodule "iot-aws"]
+	path = iot-aws
+	url = https://github.com/tqer39/iot-aws
+[submodule "paiza"]
+	path = paiza
+	url = https://github.com/tqer39/paiza
+[submodule "abs-data-logger-prd"]
+	path = abs-data-logger-prd
+	url = https://github.com/tqer39/abs-data-logger-prd
+[submodule "metabase"]
+	path = metabase
+	url = https://github.com/tqer39/metabase
+[submodule "sb3"]
+	path = sb3
+	url = https://github.com/tqer39/sb3
+[submodule "study"]
+	path = study
+	url = https://github.com/tqer39/study
+[submodule "private-aws"]
+	path = private-aws
+	url = https://github.com/tqer39/private-aws
+[submodule "cleanLogTestTool"]
+	path = cleanLogTestTool
+	url = https://github.com/tqer39/cleanLogTestTool
+[submodule "abs-aws-management"]
+	path = abs-aws-management
+	url = https://github.com/tqer39/abs-aws-management
