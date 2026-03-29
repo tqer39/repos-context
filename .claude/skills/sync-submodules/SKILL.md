@@ -15,10 +15,10 @@ tqer39 GitHub アカウントの全リポジトリを git submodule として同
 以下のコマンドをそのまま実行する。`gh api` や他のコマンドで代替しないこと。`gh repo list` はページネーションを自動処理するため、全リポジトリを確実に取得できる。
 
 ```bash
-gh repo list tqer39 --limit 1000 --json name,isArchived,isFork,defaultBranchRef
+gh repo list tqer39 --limit 1000 --no-archived --json name,isFork,defaultBranchRef
 ```
 
-このコマンドで 50 件以上のリポジトリが返ると期待される。30 件程度しか返らない場合はコマンドが正しく実行されているか確認すること。
+`--no-archived` でアーカイブ済みリポジトリは取得時点で除外される。このコマンドで 40 件以上のリポジトリが返ると期待される。30 件程度しか返らない場合はコマンドが正しく実行されているか確認すること。
 
 ### ステップ 2: フィルタリング
 
@@ -27,7 +27,7 @@ gh repo list tqer39 --limit 1000 --json name,isArchived,isFork,defaultBranchRef
 | 除外条件 | 理由 |
 | --------- | ------ |
 | `name: "repos-context"` | 自己参照の防止 |
-| `isArchived: true` | アーカイブ済みリポジトリは凍結されており不要 |
+| `name: ".github"` | 既存の `.github/` ディレクトリ（workflows 等）と衝突する |
 | `isFork: true` | フォークは一時的・実験的なものが多い |
 | `defaultBranchRef: null` | 空リポジトリ（コミットなし）は submodule 追加不可 |
 
@@ -45,7 +45,7 @@ gh repo list tqer39 --limit 1000 --json name,isArchived,isFork,defaultBranchRef
 git submodule add https://github.com/tqer39/{repo_name} {repo_name}
 ```
 
-`.github` のようなドットで始まるリポジトリ名もそのまま使用して問題ない。
+サブモジュール数が多い場合、複数の Bash ツール呼び出しを並列で発行して効率化する。ただし、1 件の失敗が他に波及しないよう、各 `git submodule add` は独立した Bash 呼び出しとして実行する（`&&` チェインで連結しない）。失敗したサブモジュールはスキップし、ステップ 7 でユーザーに報告する。
 
 ### ステップ 5: 全サブモジュールを最新化
 
@@ -63,15 +63,31 @@ git -C {repo_name} pull origin {default_branch}
 
 サブモジュール数が多い場合（10 以上）、複数の Bash ツール呼び出しを並列で発行して効率化する。たとえば 5 つずつまとめて並列実行する。
 
-### ステップ 6: 不要サブモジュールの検出
+最新化後、更新があったサブモジュールを staging する:
 
-`.gitmodules` に存在するがステップ 2 の結果に含まれないサブモジュールがあれば、ユーザーに報告する。考えられる原因:
+```bash
+git add {repo_name}
+```
 
-- リポジトリが削除された
-- リポジトリがアーカイブされた
-- リポジトリ名が変更された
+全サブモジュールに対して `git add` を実行すれば、更新の有無にかかわらず安全に staging できる。
 
-**自動削除は行わない。** ユーザーの判断を待つ。
+### ステップ 6: 不要サブモジュールの検出と削除
+
+`.gitmodules` に存在するがステップ 2 の結果に含まれないサブモジュールを検出する。
+
+検出されたサブモジュールについて、`gh repo view` でリポジトリの状態を確認する:
+
+```bash
+gh repo view tqer39/{repo_name} --json isArchived,name 2>&1
+```
+
+- **アーカイブ済み** (`isArchived: true`): 自動で削除する。凍結されたリポジトリを追跡し続ける意味がないため。
+
+  ```bash
+  git rm {repo_name}
+  ```
+
+- **削除済み・名前変更等** (コマンドがエラーを返す場合): ユーザーに報告し、判断を待つ。
 
 ### ステップ 7: 結果報告
 
