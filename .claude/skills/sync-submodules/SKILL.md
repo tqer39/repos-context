@@ -18,14 +18,14 @@ tqer39 GitHub アカウントの全リポジトリを git submodule として同
 gh repo list tqer39 --limit 1000 --json name,isArchived,isFork,defaultBranchRef
 ```
 
-このコマンドで 50 件以上のリポジトリが返ることが期待される。30 件程度しか返らない場合はコマンドが正しく実行されているか確認すること。
+このコマンドで 50 件以上のリポジトリが返ると期待される。30 件程度しか返らない場合はコマンドが正しく実行されているか確認すること。
 
 ### ステップ 2: フィルタリング
 
 取得結果から以下を除外する:
 
 | 除外条件 | 理由 |
-|---------|------|
+| --------- | ------ |
 | `name: "repos-context"` | 自己参照の防止 |
 | `isArchived: true` | アーカイブ済みリポジトリは凍結されており不要 |
 | `isFork: true` | フォークは一時的・実験的なものが多い |
@@ -51,9 +51,9 @@ git submodule add https://github.com/tqer39/{repo_name} {repo_name}
 
 既存・新規を問わず、全サブモジュールでデフォルトブランチの最新を取得する。
 
-`git submodule update --remote` は使わないこと。このコマンドはデフォルトブランチを正しく追跡しない場合がある。代わりに、以下の 3 コマンドをサブモジュールごとに実行する。これにより、各リポジトリの正しいデフォルトブランチに確実に切り替わる。
+`git submodule update --remote` は使わないこと。このコマンドはデフォルトブランチを正しく追跡しない場合がある。代わりに、以下の 3 コマンドをサブモジュールごとに実行する。各リポジトリの正しいデフォルトブランチへ確実に切り替わる。
 
-デフォルトブランチはリポジトリごとに異なる（main, master, trial, javascript, feature 等）。ステップ 1 で取得した `defaultBranchRef.name` の値を必ず使用し、決め打ちしないこと。
+デフォルトブランチはリポジトリごとに異なる（main / master / trial / javascript / feature 等）。ステップ 1 で取得した `defaultBranchRef.name` の値を必ず使用し、決め打ちしないこと。
 
 ```bash
 git -C {repo_name} fetch origin
@@ -93,4 +93,4 @@ git diff --stat
 
 - `gh` CLI が認証済みであること（`gh auth status` で確認可能）
 - ネットワーク接続が必要
-- private リポジトリも `gh` 認証で取得・clone 可能だが、他の環境からの参照時に認証が必要になる点に注意
+- private リポジトリも `gh` 認証で取得・clone 可能だが、他の環境から参照する場合は別途認証が必要となる
